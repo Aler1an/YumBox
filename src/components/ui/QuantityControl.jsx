@@ -12,14 +12,18 @@ const QuantityControl = props => {
 				className="group cursor-pointer py-2"
 				onClick={onDecrease}
 			>
-				<Minus className={cn(transitionColors, 'text-white group-hover:text-[#FCB852]')} />
+				<Minus
+					className={cn(transitionColors, 'text-white group-hover:text-primary active:scale-90')}
+				/>
 			</button>
 			<span className={cn(textSemibold, 'font-avenir text-sm text-center')}>{quantity}</span>
 			<button
 				className="group cursor-pointer py-2"
 				onClick={onIncrease}
 			>
-				<Plus className={cn(transitionColors, 'text-white group-hover:text-[#FCB852]')} />
+				<Plus
+					className={cn(transitionColors, 'text-white group-hover:text-primary active:scale-90')}
+				/>
 			</button>
 		</div>
 	)

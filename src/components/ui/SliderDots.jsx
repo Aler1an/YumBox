@@ -1,4 +1,4 @@
-import { flexBetween } from '@styles/ui'
+import { flexBetween, transitionOpacity } from '@styles/ui'
 import { cn } from '@lib/cn'
 
 const SliderDots = props => {
@@ -9,9 +9,11 @@ const SliderDots = props => {
 			{Array.from({ length: total }).map((_, index) => (
 				<div
 					key={index}
-					className={`w-2.25 h-2.25 rounded-full bg-white transition-opacity ${
+					className={cn(
+						transitionOpacity,
+						'w-2.25 h-2.25 rounded-full bg-white',
 						activeIndex === index ? 'opacity-100' : 'opacity-40'
-					}`}
+					)}
 				/>
 			))}
 		</div>
