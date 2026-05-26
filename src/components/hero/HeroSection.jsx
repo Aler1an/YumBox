@@ -7,8 +7,25 @@ import SliderDots from '@ui/SliderDots'
 import SliderNav from '@ui/SliderNav'
 import { flexCol, flexBetween } from '@styles/ui'
 import { cn } from '@lib/cn'
+import { Banner, BannerMobile } from '@assets/index'
 
-const slides = [0, 1, 2]
+const slides = [
+	{
+		desktop: Banner,
+		mobile: BannerMobile,
+		alt: 'Delicious food banner'
+	},
+	{
+		desktop: Banner,
+		mobile: BannerMobile,
+		alt: 'Delicious food banner'
+	},
+	{
+		desktop: Banner,
+		mobile: BannerMobile,
+		alt: 'Delicious food banner'
+	}
+]
 
 const HeroSection = () => {
 	const [currentSlide, setCurrentSlide] = useState(0)
@@ -22,15 +39,10 @@ const HeroSection = () => {
 			aria-label="Hero banner"
 			className={cn(flexCol, 'items-center px-5 pt-20.5 md:pt-32')}
 		>
-			<div
-				className={cn(
-					flexBetween,
-					'relative w-full max-w-319 min-h-79 md:max-h-125.75 aspect-video md:aspect-auto bg-[#222] rounded-3xl overflow-hidden px-2.25 mx-auto mb-4.5 md:mb-5'
-				)}
-			>
+			<div className="relative w-full max-w-319 min-h-79 bg-background rounded-3xl overflow-hidden mx-auto mb-4.5 md:mb-5">
 				<SliderNav
 					direction="prev"
-					className="hidden md:flex z-50"
+					className="hidden md:flex absolute left-2 -translate-y-1/2 top-[47.5%] z-10"
 					onClick={prev}
 				/>
 				<Swiper
@@ -45,20 +57,22 @@ const HeroSection = () => {
 					}}
 					onSwiper={swiper => (swiperRef.current = swiper)}
 					onSlideChange={swiper => setCurrentSlide(swiper.realIndex)}
-					className="overflow-hidden rounded-3xl w-full h-full"
+					className="overflow-hidden rounded-3xl min-h-79 w-full h-full aspect-video md:aspect-auto"
 				>
-					{slides.map(slide => (
-						<SwiperSlide key={slide}>
-							<div className="slide-inner">
-								<HeroBanner />
-							</div>
+					{slides.map((slide, index) => (
+						<SwiperSlide key={index}>
+							<HeroBanner
+								desktopSrc={slide.desktop}
+								mobileSrc={slide.mobile}
+								alt={slide.alt}
+							/>
 						</SwiperSlide>
 					))}
 				</Swiper>
 
 				<SliderNav
 					direction="next"
-					className="hidden md:flex"
+					className="hidden md:flex absolute right-2 -translate-y-1/2 top-[47.5%] z-10"
 					onClick={next}
 				/>
 			</div>
