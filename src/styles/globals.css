@@ -11,6 +11,14 @@
 @theme {
 	--font-montserrat: 'Montserrat', sans-serif;
 	--font-avenir: 'Avenir Next Cyr', sans-serif;
+	--color-primary: #fcb852;
+	--color-secondary: #f3ba4f;
+	--color-background: #222;
+	
+}
+
+html {
+	scrollbar-gutter: stable;
 }
 
 .slide-inner {
@@ -19,10 +27,36 @@
 	filter: blur(2px);
 	transition: all 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
- 
+
 .swiper-slide-active .slide-inner {
 	opacity: 1;
 	transform: scale(1) translateY(0);
 	filter: blur(0);
 }
 
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #1a1a1a;
+	border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #fcb852;
+	border-radius: 100px;
+	border: 2px solid #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #e09e3b;
+}
+
+@supports (scrollbar-color: auto) {
+	html {
+		scrollbar-color: #fcb852 #1a1a1a;
+		scrollbar-width: thin;
+	}
+}

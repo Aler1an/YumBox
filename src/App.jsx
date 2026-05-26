@@ -17,7 +17,8 @@ const App = () => {
 		removeFromBasket,
 		updateQuantity,
 		totalBasketPrice,
-		itemsCount
+		itemsCount,
+		submitOrder
 	} = useBasket()
 
 	return (
@@ -25,7 +26,8 @@ const App = () => {
 			<Header
 				basketItemsCount={itemsCount}
 				totalPrice={totalBasketPrice}
-				onBasketClick={() => setIsBasketOpen(true)}
+				onBasketClick={setIsBasketOpen}
+				isBasketOpen={isBasketOpen}
 				onMobileMenuClose={setIsMobileMenuOpen}
 				isMobileMenuOpen={isMobileMenuOpen}
 			/>
@@ -49,6 +51,7 @@ const App = () => {
 				basketItems={basketItems}
 				onUpdateQuantity={updateQuantity}
 				onRemoveFromBasket={removeFromBasket}
+				onCheckout={submitOrder}
 			/>
 
 			<Footer/>

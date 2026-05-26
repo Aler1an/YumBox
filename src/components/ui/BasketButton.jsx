@@ -2,12 +2,21 @@ import { basketButton, flexCenter } from '@styles/ui'
 import { cn } from '@lib/cn'
 
 const BasketButton = props => {
-	const { onBasketClick, basketItemsCount, totalPrice, className = '' } = props
+	const { onBasketClick, isBasketOpen, basketItemsCount, totalPrice, className = '' } = props
+
+	function handleClick() {
+		if (!isBasketOpen) {
+			onBasketClick(true)
+		} else {
+			onBasketClick(false)
+		}
+	}
+
 	return (
 		<button
 			className={cn(basketButton, className)}
 			aria-label={`Open basket with ${basketItemsCount} items`}
-			onClick={onBasketClick}
+			onClick={handleClick}
 		>
 			<span
 				className={cn(

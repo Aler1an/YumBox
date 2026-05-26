@@ -42,12 +42,24 @@ export const useBasket = () => {
 		return calculateItemsCount(basketItems)
 	}, [basketItems])
 
+	const submitOrder = useCallback(() => {
+		const orderItems = basketItems.map(item => ({
+			id: item.id,
+			title: item.title,
+			price: item.price,
+			quantity: item.quantity
+		}))
+		setBasketItems([])
+		console.log('Submitting order:', orderItems)
+	}, [basketItems])
+
 	return {
 		basketItems,
 		addToBasket,
 		updateQuantity,
 		removeFromBasket,
 		totalBasketPrice,
-		itemsCount
+		itemsCount,
+		submitOrder
 	}
 }

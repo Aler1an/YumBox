@@ -6,7 +6,14 @@ import { cn } from '@lib/cn'
 import { flexBetween, transitionColors } from '@styles/ui'
 
 const Header = props => {
-	const { onBasketClick, basketItemsCount, totalPrice, isMobileMenuOpen, onMobileMenuClose } = props
+	const {
+		onBasketClick,
+		isBasketOpen,
+		basketItemsCount,
+		totalPrice,
+		isMobileMenuOpen,
+		onMobileMenuClose,
+	} = props
 
 	return (
 		<header className="fixed top-0 right-0 left-0 z-60 w-full bg-black">
@@ -20,10 +27,7 @@ const Header = props => {
 				<nav className="hidden md:block justify-self-center">
 					<Navigation
 						className={cn(flexBetween, 'text-white gap-7 ml-2 pt-0.5')}
-						itemClassName={cn(
-							transitionColors,
-							'whitespace-nowrap hover:text-[#fcb852]'
-						)}
+						itemClassName={cn(transitionColors, 'whitespace-nowrap hover:text-primary active:scale-95')}
 						linkClassName="font-medium text-[15px] leading-none"
 					/>
 				</nav>
@@ -36,6 +40,7 @@ const Header = props => {
 					/>
 					<BasketButton
 						onBasketClick={onBasketClick}
+						isBasketOpen={isBasketOpen}
 						basketItemsCount={basketItemsCount}
 						totalPrice={totalPrice}
 						className={cn(

@@ -27,35 +27,39 @@ const ProductCardActions = props => {
 					className={cn(
 						textLgSemibold,
 						transitionAll,
-						'w-full max-w-78.75 text-center py-2.5 px-5'
+						'hidden lg:block w-full max-w-78.75 text-center py-2.5 px-5'
 					)}
 				>
 					{price} грн
 				</span>
-				<div className={cn(transitionAll, 'w-full h-full absolute left-0 bottom-0 mt-1')}>
+				<div className={cn(flexCenter, transitionAll, 'w-full h-full max-w-80 absolute bottom-0 mt-1')}>
 					<button
-						className={cn(flexCenter, 'group relative w-full h-full rounded-full overflow-hidden cursor-pointer')}
+						className={cn(
+							flexCenter,
+							'group relative w-full h-full rounded-full overflow-hidden cursor-pointer border-2 border-white lg:border-0 '
+						)}
 						onClick={onAddToBasket}
 					>
 						<span
 							className={cn(
 								absoluteFull,
-								'rounded-full bg-black scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100'
+								'rounded-full bg-black scale-x-100 lg:scale-x-0 lg:transition-transform lg:duration-500 lg:ease-out lg:group-hover:scale-x-100'
 							)}
 						/>
 						<span
 							className={cn(
 								absoluteFull,
-								'rounded-full border-2 border-white opacity-0 scale-95 transition-all duration-400 delay-200 ease-out group-hover:opacity-100 group-hover:scale-100'
+								'hidden lg:block rounded-full border-2 border-white opacity-0 scale-95 transition-all duration-400 delay-200 ease-out group-hover:opacity-100 group-hover:scale-100'
 							)}
 						/>
 						<span
 							className={cn(
 								transitionAll,
-								'relative z-10 text-base font-medium ease-out translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:text-white'
+								'relative z-10 text-base ease-out lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 lg:group-hover:text-white'
 							)}
 						>
-							Добавити в кошик
+							<span className='font-medium'>Добавити в кошик</span>
+							<span className="lg:hidden font-medium"> за {price} грн</span>
 						</span>
 					</button>
 				</div>
@@ -63,14 +67,13 @@ const ProductCardActions = props => {
 			<div
 				className={cn(
 					flexCenter,
-					absoluteFull,
 					smoothAnimation,
-					'w-full h-full border-2 rounded-full font-normal',
+					'w-full h-full max-w-80 border-2 rounded-full font-normal px-3 text-center',
 					isInBasket ? visibleState : hiddenState
 				)}
 			>
 				<Check className="p-0.5 mr-1" />
-				<span className="text-base leading-none">
+				<span className="text-base leading-tight">
 					В кошику <b>{quantity} шт</b> за <b>{price * quantity}грн</b>
 				</span>
 			</div>
