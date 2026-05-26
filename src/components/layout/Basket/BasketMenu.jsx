@@ -1,20 +1,21 @@
 import Close from '@assets/icons/close.svg?react'
-import {
-	calculateFinalPrice,
-	deliveryPrice,
-	mapOrderItems,
-	calculateTotalPrice
-} from '@utils/basket'
+import { calculateFinalPrice, deliveryPrice, calculateTotalPrice } from '@utils/basket'
 import BasketItem from './BasketItem'
 import BasketFooter from './BasketFooter'
 import { cn } from '@lib/cn'
-import { flexCol, transitionTransform } from '@styles/ui'
-import { flexBetween, textSemibold, transitionColors } from '@styles/ui'
+import {
+	flexBetween,
+	textSemibold,
+	transitionColors,
+	flexCol,
+	transitionTransform,
+	transitionOpacity
+} from '@styles/ui'
 import { useEscapeKey } from '@hooks/useEscapeKey'
 import { useLockBodyScroll } from '@hooks/useLockBodyScroll'
 
 const BasketMenu = props => {
-	const { isOpen, onClose, basketItems, onUpdateQuantity, onRemoveFromBasket } = props
+	const { isOpen, onClose, basketItems, onUpdateQuantity, onRemoveFromBasket, onCheckout } = props
 
 	useEscapeKey(onClose)
 	useLockBodyScroll(isOpen)
@@ -22,17 +23,14 @@ const BasketMenu = props => {
 	const totalPrice = calculateTotalPrice(basketItems)
 	const finalPrice = calculateFinalPrice(totalPrice)
 
-	const handleCheckout = () => {
-		const orderItems = mapOrderItems(basketItems)
-		console.log(orderItems)
-	}
-
 	return (
 		<>
 			<div
-				className={`fixed inset-0 backdrop-blur-[10px] bg-[#fcb852]/11 z-50 transition-opacity duration-300 ${
+				className={cn(
+					transitionOpacity,
+					'fixed inset-0 backdrop-blur-[10px] bg-primary/11 z-50',
 					isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-				}`}
+				)}
 				onClick={onClose}
 			/>
 			<div
@@ -52,7 +50,7 @@ const BasketMenu = props => {
 						className="group cursor-pointer"
 						onClick={onClose}
 					>
-						<Close className={cn(transitionColors, 'text-white group-hover:text-[#FCB852]')} />
+						<Close className={cn(transitionColors, 'text-white group-hover:text-primary')} />
 					</button>
 				</div>
 
@@ -77,7 +75,7 @@ const BasketMenu = props => {
 					<BasketFooter
 						deliveryPrice={deliveryPrice}
 						finalPrice={finalPrice}
-						onCheckout={handleCheckout}
+						onCheckout={onCheckout}
 					/>
 				)}
 			</div>
