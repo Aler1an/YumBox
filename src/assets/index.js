@@ -1,6 +1,6 @@
-import Set from './images/set.png'
 import Box from './images/box.png'
-import SetMobile from './images/setMobile.png'
 import BoxMobile from './images/boxMobile.png'
+import Banner from './images/banner.png'
+import BannerMobile from './images/banner-mobile.png'
 
-export { Box, Set, SetMobile, BoxMobile }
+export { Box, BoxMobile, Banner, BannerMobile }
