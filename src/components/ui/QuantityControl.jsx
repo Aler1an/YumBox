@@ -9,20 +9,20 @@ const QuantityControl = props => {
 	return (
 		<div className={cn(flexBetween, 'border rounded-full gap-5.5 px-3 mr-0.5')}>
 			<button
-				className="group cursor-pointer py-2"
+				className="group cursor-pointer py-2 active:scale-90"
 				onClick={onDecrease}
 			>
 				<Minus
-					className={cn(transitionColors, 'text-white group-hover:text-primary active:scale-90')}
+					className={cn(transitionColors, 'text-white group-hover:text-primary')}
 				/>
 			</button>
 			<span className={cn(textSemibold, 'font-avenir text-sm text-center')}>{quantity}</span>
 			<button
-				className="group cursor-pointer py-2"
+				className="group cursor-pointer py-2 active:scale-90"
 				onClick={onIncrease}
 			>
 				<Plus
-					className={cn(transitionColors, 'text-white group-hover:text-primary active:scale-90')}
+					className={cn(transitionColors, 'text-white group-hover:text-primary')}
 				/>
 			</button>
 		</div>
