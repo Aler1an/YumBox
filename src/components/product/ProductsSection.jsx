@@ -19,7 +19,7 @@ const ProductsSection = props => {
 				<h2 className="font-medium text-xl leading-none text-center mb-7.25 md:mb-18.75">
 					Найчастіше замовляють
 				</h2>
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 -mx-3.75">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 -mx-3.75">
 					{products.map(product => {
 						return (
 							<ProductCard
